@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion androidConfig.compileSdk
+    namespace "${androidConfig.namespace}.interactor"
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdk
+        targetSdkVersion androidConfig.targetSdk
+    }
+}
+
+dependencies {
+    implementation project(path: ':entity')
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
