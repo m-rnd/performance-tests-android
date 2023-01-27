@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
 
 apply from: "$rootDir/dependencies.gradle"
 
@@ -17,7 +18,17 @@ android {
 
 dependencies {
     implementation project(path: ':entity')
+    implementation project(path: ':interactor')
+
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidx.viewmodel_ktx_version}"
+
+    implementation "com.google.dagger:hilt-android:${google.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${google.hilt}"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
 
 java {
