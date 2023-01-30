@@ -1,21 +1,22 @@
 package com.example.finews.di
 
 import com.example.finews.datasource.NewsDataSource
-import com.example.finews.repository.NewsRepositoryImpl
-import com.example.interactor.repository.NewsRepository
+import com.example.finews.datasource.NewsDataSourceImpl
+import com.example.finews.datasource.api.service.NewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 @InstallIn(SingletonComponent::class)
 @Module
-object RepositoryModule {
+object DatasourceModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(
-        newsDataSource: NewsDataSource
-    ): NewsRepository = NewsRepositoryImpl(newsDataSource)
+    fun provideNewsDataSource(
+        newsService: NewsService
+    ): NewsDataSource = NewsDataSourceImpl(newsService)
 }

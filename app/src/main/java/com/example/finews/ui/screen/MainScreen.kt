@@ -1,6 +1,7 @@
 package com.example.finews.ui.screen
 
-import android.widget.Toast
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +12,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.finews.ui.theme.FiNewsTheme
 import com.example.presentation.MainViewModel
@@ -19,8 +19,14 @@ import com.example.presentation.MainViewModel
 @Composable
 fun MainScreen(
     viewModel: MainViewModel
+) = with(viewModel) {
+    MainContent(onDownloadClick = ::onDownloadClick)
+}
+
+@Composable
+private fun MainContent(
+    onDownloadClick: () -> Unit
 ) {
-    val context = LocalContext.current
     // A surface container using the 'background' color from the theme
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -31,11 +37,13 @@ fun MainScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Greeting("Android")
-            Button(onClick = {
-                Toast.makeText(context, "This is a Sample Toast", Toast.LENGTH_SHORT)
-                    .show()
-            }) {
-                Text("button")
+            Text(text = "Download", modifier = Modifier.clickable(
+                interactionSource = MutableInteractionSource(),
+                indication = null,
+                onClick = onDownloadClick
+            ))
+            Button(onClick = onDownloadClick) {
+                Text("download")
             }
         }
     }
@@ -51,6 +59,8 @@ private fun Greeting(name: String) {
 @Composable
 private fun DefaultPreview() {
     FiNewsTheme {
-        Greeting("Android")
+        MainContent {
+
+        }
     }
 }
