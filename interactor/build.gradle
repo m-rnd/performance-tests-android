@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.dagger.hilt.android'
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion androidConfig.compileSdk
+    namespace "${androidConfig.namespace}.interactor"
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdk
+        targetSdkVersion androidConfig.targetSdk
+    }
+}
+
+dependencies {
+    implementation project(path: ':entity')
+
+    implementation "com.google.dagger:hilt-android:${google.hilt_version}"
+    kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"
+
+    implementation "com.jakewharton.timber:timber:${timber.timber_version}"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
