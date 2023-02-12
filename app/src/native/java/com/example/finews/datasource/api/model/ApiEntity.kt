@@ -1,4 +1,4 @@
-package com.example.finews.datasource.api.service.model
+package com.example.finews.datasource.api.model
 
 interface ApiEntity<T> {
     fun toEntity(): T?

@@ -20,17 +20,38 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        ndk {
+            // Filter for architectures supported by Flutter.
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+        }
     }
 
-    flavorDimensions "api"
+    flavorDimensions "platform"
     productFlavors {
-        emulator {
-            dimension "api"
-            buildConfigField "String", "API_URL", '"http://10.0.2.2:3001/"'
+        'native' {
+            dimension "platform"
         }
-        device {
-            dimension "api"
-            buildConfigField "String", "API_URL", '"http://192.168.178.39:3001/"'
+        'flutter' {
+            dimension "platform"
+        }
+    }
+
+    sourceSets{
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/java']
+            aidl.srcDirs = ['src/main/java']
+            renderscript.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+        'native' {
+            java.srcDirs = ['src/native/java']
+        }
+        'flutter' {
+            java.srcDirs = ['src/flutter/java']
         }
     }
 
@@ -39,6 +60,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+        }
+        benchmark {
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['release']
+            debuggable false
         }
     }
     compileOptions {
@@ -70,6 +96,7 @@ dependencies {
     implementation project(path: ':interactor')
     implementation project(path: ':presentation')
     implementation project(path: ':entity')
+    implementation project(path: ':flutter')
 
     implementation "androidx.core:core-ktx:${androidx.core_ktx}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidx.lifecycle_runtime_version}"
