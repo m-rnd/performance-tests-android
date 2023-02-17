@@ -1,6 +1,7 @@
 package com.example.finews.datasource.di
 
-import com.example.finews.BuildConfig
+
+import com.example.finews.datasource.BuildConfig
 import com.example.finews.datasource.api.NewsService
 import dagger.Module
 import dagger.Provides
@@ -31,7 +32,6 @@ object RetrofitApiModule {
     fun provideHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder().apply {
             if (BuildConfig.DEBUG) {
-                BuildConfig.VERSION_CODE
                 addInterceptor(loggingInterceptor)
             }
         }.build()

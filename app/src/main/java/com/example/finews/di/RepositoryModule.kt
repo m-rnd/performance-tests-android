@@ -1,6 +1,6 @@
 package com.example.finews.di
 
-import com.example.finews.datasource.NewsDataSource
+import com.example.entity.datasource.NewsDataSource
 import com.example.finews.repository.NewsRepositoryImpl
 import com.example.interactor.repository.NewsRepository
 import dagger.Module

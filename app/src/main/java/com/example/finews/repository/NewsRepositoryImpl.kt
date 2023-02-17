@@ -1,6 +1,6 @@
 package com.example.finews.repository
 
-import com.example.finews.datasource.NewsDataSource
+import com.example.entity.datasource.NewsDataSource
 import com.example.interactor.repository.NewsRepository
 import javax.inject.Inject
 

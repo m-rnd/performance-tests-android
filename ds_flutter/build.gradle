@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.finews.datasource'
+    compileSdk androidConfig.compileSdk
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdk
+        targetSdkVersion androidConfig.targetSdk
+        versionName androidConfig.versionName
+        versionCode androidConfig.versionCode
+
+        ndk {
+            // Filter for architectures supported by Flutter.
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        benchmark {
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['release']
+            debuggable false
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':entity')
+    implementation project(path: ':flutter')
+
+    implementation "com.google.dagger:hilt-android:${google.hilt_version}"
+    kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"
+}

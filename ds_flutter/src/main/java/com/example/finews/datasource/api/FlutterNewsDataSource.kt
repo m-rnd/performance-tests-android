@@ -2,7 +2,7 @@ package com.example.finews.datasource.api
 
 import com.example.entity.AppResult
 import com.example.entity.NewsEntry
-import com.example.finews.datasource.NewsDataSource
+import com.example.entity.datasource.NewsDataSource
 import javax.inject.Inject
 
 class FlutterNewsDataSource @Inject constructor(

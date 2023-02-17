@@ -1,4 +1,4 @@
-package com.example.finews.datasource
+package com.example.entity.datasource
 
 import com.example.entity.AppResult
 import com.example.entity.NewsEntry

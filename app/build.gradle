@@ -47,12 +47,6 @@ android {
             res.srcDirs = ['src/main/res']
             assets.srcDirs = ['src/main/assets']
         }
-        'native' {
-            java.srcDirs = ['src/native/java']
-        }
-        'flutter' {
-            java.srcDirs = ['src/flutter/java']
-        }
     }
 
     buildTypes {
@@ -96,7 +90,8 @@ dependencies {
     implementation project(path: ':interactor')
     implementation project(path: ':presentation')
     implementation project(path: ':entity')
-    implementation project(path: ':flutter')
+    nativeImplementation project(path: ':ds_native')
+    flutterImplementation project(path: ':ds_flutter')
 
     implementation "androidx.core:core-ktx:${androidx.core_ktx}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidx.lifecycle_runtime_version}"
@@ -106,10 +101,7 @@ dependencies {
     implementation "androidx.compose.material:material:${androidx.compose_material_version}"
     implementation "androidx.hilt:hilt-navigation-compose:${androidx.hilt_navigation_compose_version}"
     implementation "androidx.navigation:navigation-compose:${androidx.navigation_compose_version}"
-    
-    implementation "com.squareup.retrofit2:retrofit:${squareup.retrofit_version}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${squareup.logging_interceptor_version}"
-    implementation "com.squareup.retrofit2:converter-gson:${squareup.gson_converter_version}"
+
 
     implementation "com.google.dagger:hilt-android:${google.hilt_version}"
     kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"
