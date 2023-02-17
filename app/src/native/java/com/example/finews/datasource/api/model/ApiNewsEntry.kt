@@ -1,7 +1,7 @@
-package com.example.finews.datasource.api.service.model
+package com.example.finews.datasource.api.model
 
 import com.example.entity.NewsEntry
-import com.example.finews.datasource.api.service.mappingError
+import com.example.finews.datasource.api.mappingError
 
 data class ApiNewsEntry(
     val title: String?

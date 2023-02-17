@@ -1,6 +1,6 @@
-package com.example.finews.datasource.api.service
+package com.example.finews.datasource.api
 
-import com.example.finews.datasource.api.service.model.ApiNewsEntry
+import com.example.finews.datasource.api.model.ApiNewsEntry
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package com.example.finews.datasource.api.service
+package com.example.finews.datasource.api
 
 import com.example.entity.AppResult
 import com.example.entity.common.ErrorReason

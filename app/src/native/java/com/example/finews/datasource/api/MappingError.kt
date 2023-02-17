@@ -1,4 +1,4 @@
-package com.example.finews.datasource.api.service
+package com.example.finews.datasource.api
 
 import timber.log.Timber
 import kotlin.reflect.KProperty0

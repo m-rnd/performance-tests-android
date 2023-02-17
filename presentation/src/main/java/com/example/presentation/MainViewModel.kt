@@ -15,17 +15,13 @@ class MainViewModel @Inject constructor(
     private val navigator: Navigator,
     private val getNewsUseCase: GetNewsUseCase
 ) : ViewModel() {
-    init {
-        println("init MainViewModel")
-    }
-
 
     fun onDownloadClick() {
         viewModelScope.launch {
             println("download started")
-            getNewsUseCase()
-            //Timber.d(getNewsUseCase().toString())
+            val result = getNewsUseCase()
             println("download finished")
+            //Timber.d(result.toString())
         }
     }
 }

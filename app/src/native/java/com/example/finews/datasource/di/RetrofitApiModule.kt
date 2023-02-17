@@ -1,7 +1,7 @@
-package com.example.finews.di
+package com.example.finews.datasource.di
 
 import com.example.finews.BuildConfig
-import com.example.finews.datasource.api.service.NewsService
+import com.example.finews.datasource.api.NewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,9 +15,9 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object ApiModule {
+object RetrofitApiModule {
 
-    private const val BASE_URL = BuildConfig.API_URL
+    private const val BASE_URL = "http://10.102.17.45:3001/"
 
     @Provides
     fun provideGson(): GsonConverterFactory = GsonConverterFactory.create()

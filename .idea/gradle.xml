@@ -12,9 +12,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/benchmark" />
             <option value="$PROJECT_DIR$/entity" />
             <option value="$PROJECT_DIR$/interactor" />
             <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/../fi-news-flutter/finews_api" />
+            <option value="$PROJECT_DIR$/../fi-news-flutter/finews_api/.android/Flutter" />
           </set>
         </option>
       </GradleProjectSettings>
