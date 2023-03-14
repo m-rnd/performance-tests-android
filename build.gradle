@@ -4,6 +4,14 @@ buildscript {
         repositories {
             google()
             mavenCentral()
+            maven {
+                url '../../fi-news-flutter/finews_api/build/host/outputs/repo'
+                // This is relative to the location of the build.gradle file
+                // if using a relative path.
+            }
+            maven {
+                url 'https://storage.googleapis.com/download.flutter.io'
+            }
         }
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.

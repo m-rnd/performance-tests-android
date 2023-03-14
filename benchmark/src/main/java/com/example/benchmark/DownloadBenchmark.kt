@@ -5,6 +5,7 @@ import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Until
+import com.example.entity.common.TraceSection
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -20,12 +21,14 @@ class DownloadBenchmark {
     @Test
     fun download() = benchmarkRule.measureRepeated(
         packageName = PackageName,
-        metrics = listOf(FrameTimingMetric(), TraceSectionMetric("MainViewModel.onDownloadClick")),
-        iterations = 5,
+        metrics = TraceSection.values().map { TraceSectionMetric(it.traceName) }.plus(FrameTimingMetric()),
+        iterations = 1,
         startupMode = StartupMode.COLD,
         setupBlock = setupDownload()
     ) {
-        val downloadButton = By.text("download")
+        pressHome()
+        startActivityAndWait()
+        val downloadButton = By.text("Download")
         device.wait(Until.hasObject(downloadButton), 5_000)
         val clickableObject = device.findObject(downloadButton)
         if (clickableObject == null) {
@@ -36,7 +39,6 @@ class DownloadBenchmark {
     }
 
     private fun setupDownload(): MacrobenchmarkScope.() -> Unit = {
-        pressHome()
-        startActivityAndWait()
+
     }
 }

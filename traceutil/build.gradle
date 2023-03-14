@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion androidConfig.compileSdk
+    namespace "${androidConfig.namespace}.traceutil"
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdk
+        targetSdkVersion androidConfig.targetSdk
+    }
+}
+dependencies {
+    implementation "androidx.tracing:tracing:${androidx.tracing_version}"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}

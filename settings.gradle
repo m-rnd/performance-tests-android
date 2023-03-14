@@ -18,14 +18,15 @@ include ':interactor'
 include ':presentation'
 include ':entity'
 
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        settingsDir.parentFile,
-        'fi-news-flutter/finews_api/.android/include_flutter.groovy'
-))
-
-include ':finews_api'
-project(':finews_api').projectDir = new File('../fi-news-flutter/finews_api')
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(
+//        settingsDir.parentFile,
+//        'fi-news-flutter/finews_api/.android/include_flutter.groovy'
+//))
+//
+//include ':finews_api'
+//project(':finews_api').projectDir = new File('../fi-news-flutter/finews_api')
 include ':benchmark'
 include ':ds_flutter'
 include ':ds_native'
+include ':traceutil'

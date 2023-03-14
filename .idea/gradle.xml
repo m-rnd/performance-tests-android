@@ -7,7 +7,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -18,8 +18,7 @@
             <option value="$PROJECT_DIR$/entity" />
             <option value="$PROJECT_DIR$/interactor" />
             <option value="$PROJECT_DIR$/presentation" />
-            <option value="$PROJECT_DIR$/../fi-news-flutter/finews_api" />
-            <option value="$PROJECT_DIR$/../fi-news-flutter/finews_api/.android/Flutter" />
+            <option value="$PROJECT_DIR$/traceutil" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -27,7 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
-        benchmark {
+        profile {
             signingConfig signingConfigs.debug
             matchingFallbacks = ['release']
             debuggable false
@@ -37,7 +37,13 @@ android {
 
 dependencies {
     implementation project(path: ':entity')
-    implementation project(path: ':flutter')
+    implementation project(path: ':traceutil')
+//    implementation project(path: ':flutter')
+
+    debugImplementation 'com.example.finews_api:flutter_debug:1.0'
+    profileImplementation 'com.example.finews_api:flutter_profile:1.0'
+    releaseImplementation 'com.example.finews_api:flutter_release:1.0'
+
 
     implementation "com.google.dagger:hilt-android:${google.hilt_version}"
     kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"

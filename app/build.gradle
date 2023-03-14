@@ -55,7 +55,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
-        benchmark {
+        profile {
             signingConfig signingConfigs.debug
             matchingFallbacks = ['release']
             debuggable false
@@ -92,6 +92,7 @@ dependencies {
     implementation project(path: ':entity')
     nativeImplementation project(path: ':ds_native')
     flutterImplementation project(path: ':ds_flutter')
+    implementation project(path: ':traceutil')
 
     implementation "androidx.core:core-ktx:${androidx.core_ktx}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidx.lifecycle_runtime_version}"
@@ -101,7 +102,6 @@ dependencies {
     implementation "androidx.compose.material:material:${androidx.compose_material_version}"
     implementation "androidx.hilt:hilt-navigation-compose:${androidx.hilt_navigation_compose_version}"
     implementation "androidx.navigation:navigation-compose:${androidx.navigation_compose_version}"
-
 
     implementation "com.google.dagger:hilt-android:${google.hilt_version}"
     kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"

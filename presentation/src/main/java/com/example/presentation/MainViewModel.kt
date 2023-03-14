@@ -1,11 +1,12 @@
 package com.example.presentation
 
-import androidx.core.os.trace
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.entity.common.TraceSection
 import com.example.entity.uistate.MainUiState
 import com.example.interactor.Navigator
 import com.example.interactor.usecase.GetNewsUseCase
+import com.example.traceutil.traceAsync
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +24,7 @@ class MainViewModel @Inject constructor(
 
     fun onDownloadClick() {
         viewModelScope.launch {
-            trace("MainViewModel.onDownloadClick") {
+            traceAsync(TraceSection.MAIN_VM_ON_CLICK.traceName) {
                 println("download started")
                 _uiState.tryEmit(MainUiState.Loading)
                 val result = getNewsUseCase()

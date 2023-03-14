@@ -1,6 +1,8 @@
 package com.example.finews.datasource.di
 
 import android.content.Context
+import androidx.core.os.trace
+import com.example.entity.common.TraceSection
 import com.example.finews.datasource.api.FlutterNewsApi
 import com.example.finews.datasource.api.FlutterNewsService
 import com.example.finews.datasource.api.FlutterNewsServiceImpl
@@ -23,7 +25,7 @@ object FlutterApiModule {
     @Singleton
     fun provideFlutterEngine(
         @ApplicationContext appContext: Context
-    ): FlutterEngine {
+    ): FlutterEngine = trace(TraceSection.FLUTTER_INIT_ENGINE.traceName) {
         val flutterEngine = FlutterEngine(appContext).apply {
             dartExecutor.executeDartEntrypoint(DartExecutor.DartEntrypoint.createDefault())
         }
@@ -36,13 +38,15 @@ object FlutterApiModule {
     @Singleton
     fun provideFlutterNewsApi(
         flutterEngine: FlutterEngine
-    ) = FlutterNewsApi(flutterEngine.dartExecutor.binaryMessenger)
+    )  = trace(TraceSection.FLUTTER_INIT_API.traceName) {
+        FlutterNewsApi(flutterEngine.dartExecutor.binaryMessenger)
+    }
 
     @Provides
     @Singleton
     fun provideFlutterNewsService(
         flutterNewsApi: FlutterNewsApi
-    ): FlutterNewsService = FlutterNewsServiceImpl(flutterNewsApi)
-
-
+    ): FlutterNewsService  = trace(TraceSection.FLUTTER_INIT_SERVICE.traceName) {
+        FlutterNewsServiceImpl(flutterNewsApi)
+    }
 }

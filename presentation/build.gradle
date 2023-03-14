@@ -19,6 +19,7 @@ android {
 dependencies {
     implementation project(path: ':entity')
     implementation project(path: ':interactor')
+    implementation project(path: ':traceutil')
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${androidx.viewmodel_ktx_version}"
 
