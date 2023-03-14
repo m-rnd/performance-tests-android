@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.finews'
+    compileSdk androidConfig.compileSdk
+
+    defaultConfig {
+        minSdk androidConfig.minSdk
+        targetSdk androidConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    flavorDimensions "platform"
+    productFlavors {
+        'native' {
+            dimension "platform"
+        }
+        'flutter' {
+            dimension "platform"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        benchmark {
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['release']
+            debuggable false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion kotlin_compiler_extension_version
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+
+    implementation project(path: ':interactor')
+    implementation project(path: ':presentation')
+    implementation project(path: ':entity')
+    nativeImplementation project(path: ':ds_native')
+    flutterImplementation project(path: ':ds_flutter')
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.core:core-ktx:${androidx.core_ktx}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${androidx.lifecycle_runtime_version}"
+    implementation "androidx.activity:activity-compose:${androidx.activity_compose_version}"
+    implementation "androidx.compose.ui:ui:${androidx.compose_ui_version}"
+    implementation "androidx.compose.ui:ui-tooling-preview:${androidx.compose_ui_version}"
+    implementation "androidx.compose.material:material:${androidx.compose_material_version}"
+    implementation "androidx.hilt:hilt-navigation-compose:${androidx.hilt_navigation_compose_version}"
+    implementation "androidx.navigation:navigation-compose:${androidx.navigation_compose_version}"
+
+
+    implementation "com.google.dagger:hilt-android:${google.hilt_version}"
+    kapt "com.google.dagger:hilt-compiler:${google.hilt_version}"
+
+    implementation "com.jakewharton.timber:timber:${timber.timber_version}"
+
+    debugImplementation "androidx.compose.ui:ui-tooling:${androidx.compose_ui_version}"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:${androidx.compose_ui_version}"
+}

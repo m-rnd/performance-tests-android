@@ -17,9 +17,9 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var navigator: Navigator
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
+//        if (BuildConfig.DEBUG) {
+//            Timber.plant(Timber.DebugTree())
+//        }
 
         super.onCreate(savedInstanceState)
         setContent {

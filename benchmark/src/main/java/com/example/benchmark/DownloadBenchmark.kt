@@ -1,5 +1,6 @@
 package com.example.benchmark
 
+import android.os.Debug
 import androidx.benchmark.macro.*
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -21,7 +22,7 @@ class DownloadBenchmark {
     fun download() = benchmarkRule.measureRepeated(
         packageName = PackageName,
         metrics = listOf(FrameTimingMetric(), TraceSectionMetric("MainViewModel.onDownloadClick")),
-        iterations = 5,
+        iterations = 1,
         startupMode = StartupMode.COLD,
         setupBlock = setupDownload()
     ) {

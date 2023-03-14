@@ -1,7 +1,8 @@
-package com.example.finews
+package com.example.microbenchmark
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class NewsApplication : Application()
+class MicrobenchmarkApplication: Application() {
+}

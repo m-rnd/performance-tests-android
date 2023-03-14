@@ -18,7 +18,8 @@ import javax.inject.Singleton
 @Module
 object RetrofitApiModule {
 
-    private const val BASE_URL = "http://10.102.17.45:3001/"
+    //private const val BASE_URL = "http://10.102.17.45:3001/"
+    private const val BASE_URL = "http://10.0.2.2:3001/"
 
     @Provides
     fun provideGson(): GsonConverterFactory = GsonConverterFactory.create()

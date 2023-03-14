@@ -29,3 +29,5 @@ project(':finews_api').projectDir = new File('../fi-news-flutter/finews_api')
 include ':benchmark'
 include ':ds_flutter'
 include ':ds_native'
+include ':microbenchmark'
+include ':benchmarkable'
