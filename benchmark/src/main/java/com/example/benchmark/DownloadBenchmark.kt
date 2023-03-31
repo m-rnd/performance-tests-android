@@ -22,7 +22,7 @@ class DownloadBenchmark {
     fun download() = benchmarkRule.measureRepeated(
         packageName = PackageName,
         metrics = TraceSection.values().map { TraceSectionMetric(it.traceName) }.plus(FrameTimingMetric()),
-        iterations = 1,
+        iterations = 10,
         startupMode = StartupMode.COLD,
         setupBlock = setupDownload()
     ) {

@@ -17,5 +17,9 @@ enum class TraceSection(val traceName: String) {
 
     REPOSITORY_GET_NEWS("${TracePrefix}NewsRepositoryImpl.getNews"),
     NATIVE_DS_GET_NEWS("${TracePrefix}NativeNewsDataSource.getNews"),
-    NATIVE_API_CALL("${TracePrefix}callApi"),
+    NATIVE_API_CALL("${TracePrefix}callApi.call"),
+    NATIVE_API_MAPPING("${TracePrefix}callApi.mapping"),
+
+    FLUTTER_DS_MAPPING("${TracePrefix}FlutterNewsDataSource.getNews.mapping"),
+    FLUTTER_DS_GET_NEWS("${TracePrefix}FlutterNewsDataSource.getNews"),
 }

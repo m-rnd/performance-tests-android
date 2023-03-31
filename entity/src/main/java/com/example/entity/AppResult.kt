@@ -19,7 +19,6 @@ sealed class AppResult<out T> : Serializable {
         }
     }
 
-
     suspend fun <R> onSuccess(call: suspend (T) -> AppResult<R>): AppResult<R> {
         return when (this) {
             is Success -> call(data)

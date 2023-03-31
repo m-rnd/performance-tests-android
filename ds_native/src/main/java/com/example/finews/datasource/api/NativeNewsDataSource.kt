@@ -12,9 +12,8 @@ class NativeNewsDataSource @Inject constructor(
     override suspend fun getNews() = traceAsync(TraceSection.NATIVE_DS_GET_NEWS.traceName) {
         callApi(
             call = { newsService.getNews() },
-            mapper = {
-                it.toEntity()
-            }
+            mapper = { it.toEntity() },
+            mapperTraceSection = TraceSection.NATIVE_API_MAPPING
         )
     }
 }

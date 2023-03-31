@@ -22,16 +22,12 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<MainUiState>(MainUiState.Init)
     val uiState = _uiState.asStateFlow()
 
-    fun onDownloadClick() {
-        viewModelScope.launch {
-            traceAsync(TraceSection.MAIN_VM_ON_CLICK.traceName) {
-                println("download started")
-                _uiState.tryEmit(MainUiState.Loading)
-                val result = getNewsUseCase()
-                println("download finished")
-                //Timber.d(result.toString())
-                _uiState.tryEmit(MainUiState.Init)
-            }
+    fun onDownloadClick() = viewModelScope.launch {
+
+        traceAsync(TraceSection.MAIN_VM_ON_CLICK.traceName) {
+            _uiState.tryEmit(MainUiState.Loading)
+            getNewsUseCase()
+            _uiState.tryEmit(MainUiState.Init)
         }
     }
 }
